@@ -5,21 +5,38 @@ import '../assets/styles.css';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleLogin = async (event) => {
         event.preventDefault();
-        await fetch('http://localhost:5000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password }),
-        });
+        try {
+            const response = await fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Si la respuesta está ok, muestra los datos de respuesta en la consola
+                console.log(data);
+            } else {
+                // Si la respuesta no está ok, muestra un mensaje de error
+                setError(data.message || 'Error en el login');
+            }
+        } catch (error) {
+            // Manejo de error de la petición fetch
+            setError('El servicio no está disponible');
+        }
     };
 
     return (
         <div className="login-container">
             <form onSubmit={handleLogin}>
+                {error && <div className="alert alert-danger" role="alert">{error}</div>}
                 <div className="form-group">
                     <label htmlFor="username">Username:</label>
                     <input 
@@ -49,4 +66,3 @@ function Login() {
 }
 
 export default Login;
-
