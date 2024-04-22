@@ -1,10 +1,10 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Clientes from './components/Clientes';
 import Transacciones from './components/Transacciones';
 import Agencias from './components/Agencias';
+import './assets/styles.css';
 
 function App() {
   return (

@@ -1,52 +1,53 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const userRef = useRef(null);
 
-    const handleLogin = async (e) => {
+    useEffect(() => {
+        userRef.current.focus();
+    }, []);
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-        const { data } = await axios.post(
-            "http://localhost:5000/api/user/login",
-            { username, password }
-        );
-        localStorage.setItem("token", data.token);
-        navigate("/dashboard");
-        } catch (error) {
-        alert("Login failed!");
-        }
+        // Manejo del inicio de sesión
     };
 
     return (
-        <div className="container">
-        <form onSubmit={handleLogin}>
-            <h2>Login</h2>
-            <div className="form-group">
-            <label>Username:</label>
-            <input
-                type="text"
-                className="form-control"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
+        <div className="container my-5">
+            <div className="row justify-content-center">
+                <div className="col-md-6">
+                    <h2 className="text-center mb-4">Login al Banco de Occidente</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <label htmlFor="username" className="form-label">Username:</label>
+                            <input
+                                ref={userRef}
+                                type="text"
+                                id="username"
+                                className="form-control"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="password" className="form-label">Password:</label>
+                            <input
+                                type="password"
+                                id="password"
+                                className="form-control"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
             </div>
-            <div className="form-group">
-            <label>Password:</label>
-            <input
-                type="password"
-                className="form-control"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            </div>
-            <button type="submit" className="btn btn-primary">
-            Login
-            </button>
-        </form>
         </div>
     );
 }

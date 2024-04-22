@@ -1,0 +1,120 @@
+/* Estilos generales */
+body,
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Contenedor principal */
+    .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    }
+
+    /* Estilos de la navbar */
+    .navbar {
+    background-color: #004085;
+    color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    }
+
+    .navbar a {
+    color: #fff;
+    text-decoration: none;
+    }
+
+    /* Estilos del formulario */
+    .form-group {
+    margin-bottom: 1rem;
+    }
+
+    label {
+    display: block;
+    margin-bottom: 0.5rem;
+    }
+
+    .input-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .button-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Estilos para botones */
+.button-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.button-primary:hover {
+    background-color: #0056b3;
+    border-color: #004499;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+    .navbar {
+        padding: 0.5rem;
+    }
+}
+
+/* Estilos para tablas */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Mensajes de Alerta y Errores */
+.alert {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
